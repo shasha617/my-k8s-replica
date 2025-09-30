@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rp-pods
+  labels:
+    app: yellowapp
+    env: dev
+  namespace: devnamespace
+  annotations:
+    myecrimage: 934192905905.dkr.ecr.ap-south-1.amazonaws.com/dev/appimageyellow
+spec:
+  minReadySeconds: 6
+  replicas: 4
+  selector:
+    matchLabels:
+      app: yellowapp-pods
+  template:
+    metadata:
+      name: podlevellabels
+      labels:
+        app: yellowapp-pods
+    spec:
+      containers:
+        - name: yellowapp
+          image: 934192905905.dkr.ecr.ap-south-1.amazonaws.com/dev/appimageyellow:latest
+          ports:
+            - name: yellowapp-ports
+              containerPort: 80
+              protocol: TCP
+          startupProbe:
+            httpGet:
+            path: 
+            port: 80
+          livenessProbe:
+            tcpSocket:
+              port: 80
+          redinessProbe:
+            exec:
+              command:
+                - echo Hi, How are you ?
+                - touch manufile
