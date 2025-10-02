@@ -29,7 +29,7 @@ spec:
               protocol: TCP
           startupProbe:
             httpGet:
-            path: 
+            path: "/manu"
             port: 80
           livenessProbe:
             tcpSocket:
@@ -39,3 +39,10 @@ spec:
               command:
                 - echo Hi, How are you ?
                 - touch manufile
+            resources:
+              requests:
+                cpu: "100m"    
+                memory: "150Mi"
+              limits:
+                cpu: "200m"
+                memory: "250Mi"
