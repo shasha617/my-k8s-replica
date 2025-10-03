@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Depolyment
+kind: Deployment
 metadata:
   name: rp-pods
   labels:
@@ -21,7 +21,7 @@ spec:
         operator: NotIn
         values:
           - dev
-      - key: fortend
+      - key: frontend
         operator: Exists
   strategy:
     type: RollingUpdate
@@ -50,7 +50,7 @@ spec:
           livenessProbe:
             tcpSocket:
               port: 80
-          redinessProbe:
+          readinessProbe:
             exec:
               command:
                 - echo Hi, How are you ?
@@ -59,5 +59,5 @@ spec:
                 cpu: "100m"    
                 memory: "200Mi"
               limits:
-                cpu: "300m"  .
+                cpu: "200m"  .
                 memory: "300Mi"   
