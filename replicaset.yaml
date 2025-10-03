@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rp-pods
+  name: mycss
   labels:
-    app: yellowapp
-    env: dev
+    app: web
+    env: prod
   namespace: devnamespace
   annotations:
     kubernetes.io/change-cause: "glass-application"
 spec:
   minReadySeconds: 6
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: my-css
