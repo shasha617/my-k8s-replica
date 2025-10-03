@@ -45,19 +45,26 @@ spec:
               protocol: TCP
           startupProbe:
             httpGet:
-            path: "/manu"
-            port: 80
+              path: "/manu"
+              port: 80
+            failureThreshold: 3
+            periodSeconds: 10
           livenessProbe:
             tcpSocket:
               port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
           readinessProbe:
             exec:
               command:
-                - echo Hi, How are you ?
+                - echo
+                - "Hi, How are you?"
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
-              cpu: "100m"    
+              cpu: "100m"
               memory: "200Mi"
             limits:
-              cpu: "200m"  
-              memory: "300Mi"   
+              cpu: "200m"
+              memory: "300Mi"
