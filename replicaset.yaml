@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: yellowapp
-          image: 934192905905.dkr.ecr.ap-south-1.amazonaws.com/dev/appimageyellow:latest
+          image: krishna731/mycssimages:glass
           ports:
             - name: yellowapp-ports
               containerPort: 80
