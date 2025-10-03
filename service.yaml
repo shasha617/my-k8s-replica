@@ -7,5 +7,5 @@ spec:
   selector:
     app: yellowapp
   ports:
-    - port: 80 
+    - port: 80  ..
      
